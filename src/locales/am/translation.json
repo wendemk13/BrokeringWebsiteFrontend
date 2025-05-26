@@ -215,5 +215,7 @@
   "rejected": "የተከለከለ",
   "Failed to load featured houses":"ተለይተው የቀረቡ ቤቶችን መጫን አልተሳካም።",
   "Failed to load featured cars":"ተለይተው የቀረቡ መኪናዎችን መጫን አልተሳካም።",
-  "Loading featured cars...":"ተለይተው የቀረቡ መኪኖችን በመፈለግ ላይ..."
+  "Loading featured cars...":"ተለይተው የቀረቡ መኪኖችን በመፈለግ ላይ...",
+  "Failed to load featured houses":"ተለይተው የቀረቡ ቤቶችን መጫን አልተሳካም።",
+  "Failed to load featured cars":"ተለይተው የቀረቡ መኪናዎችን መጫን አልተሳካም።"
 }

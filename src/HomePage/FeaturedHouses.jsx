@@ -25,7 +25,7 @@ function FeaturedHouses() {
         }
       } catch (error) {
         console.error('Error fetching houses:', error);
-        setError(t('Failed to load featured houses'));
+        setError(t("Failed to load featured houses"));
       } finally {
         setLoading(false);
       }
@@ -37,7 +37,7 @@ function FeaturedHouses() {
  
 
   if (loading) return <div className="listof-loading">Loading featured houses...</div>;
-  if (error) return <div className="listof-error">{error}</div>;
+  if (error) return <div className="listof-error">t{error}</div>;
   if (properties.length === 0) return <div className="listof-empty">{t(`No featured houses available`)}</div>;
 
   return (
