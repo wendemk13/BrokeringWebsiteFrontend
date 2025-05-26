@@ -190,7 +190,7 @@
 
 
 
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next"; // <-- added this import
 
 
 import React, { useState } from 'react';

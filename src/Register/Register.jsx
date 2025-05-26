@@ -1,29 +1,29 @@
-import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
-import axios from 'axios';
-import './Register.css';
-import { useTranslation } from 'react-i18next';
+import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
+import axios from "axios";
+import "./Register.css";
+import { useTranslation } from "react-i18next"; // <-- added this import
 
 const Register = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
-    first_name: '',
-    last_name: '',
-    username: '',
-    email: '',
-    password: '',
-    confirmPassword: '',
-    role: 'customer',
+    first_name: "",
+    last_name: "",
+    username: "",
+    email: "",
+    password: "",
+    confirmPassword: "",
+    role: "customer",
     profile_image: null,
   });
-  const {t,i18n}=useTranslation();
+  const { t, i18n } = useTranslation();
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
   };
 
   const [errors, setErrors] = useState({});
-  const [apiError, setApiError] = useState('');
+  const [apiError, setApiError] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
@@ -33,15 +33,19 @@ const Register = () => {
 
   const validate = () => {
     const newErrors = {};
-    if (!formData.first_name.trim()) newErrors.first_name = 'First name is required';
-    if (!formData.last_name.trim()) newErrors.last_name = 'Last name is required';
-    if (!formData.username.trim()) newErrors.username = 'Username is required';
-    if (!formData.email.trim()) newErrors.email = 'Email is required';
-    else if (!/^\S+@\S+\.\S+$/.test(formData.email)) newErrors.email = 'Email is invalid';
-    if (!formData.password.trim()) newErrors.password = 'Password is required';
-    else if (formData.password.length < 6) newErrors.password = 'Password must be at least 6 characters';
+    if (!formData.first_name.trim())
+      newErrors.first_name = "First name is required";
+    if (!formData.last_name.trim())
+      newErrors.last_name = "Last name is required";
+    if (!formData.username.trim()) newErrors.username = "Username is required";
+    if (!formData.email.trim()) newErrors.email = "Email is required";
+    else if (!/^\S+@\S+\.\S+$/.test(formData.email))
+      newErrors.email = "Email is invalid";
+    if (!formData.password.trim()) newErrors.password = "Password is required";
+    else if (formData.password.length < 6)
+      newErrors.password = "Password must be at least 6 characters";
     if (formData.password !== formData.confirmPassword)
-      newErrors.confirmPassword = 'Passwords do not match';
+      newErrors.confirmPassword = "Passwords do not match";
     return newErrors;
   };
 
@@ -55,31 +59,35 @@ const Register = () => {
 
     setIsSubmitting(true);
     setErrors({});
-    setApiError('');
+    setApiError("");
 
     try {
       const data = new FormData();
-      data.append('first_name', formData.first_name);
-      data.append('last_name', formData.last_name);
-      data.append('username', formData.username);
-      data.append('email', formData.email);
-      data.append('password', formData.password);
-      data.append('role', formData.role);
+      data.append("first_name", formData.first_name);
+      data.append("last_name", formData.last_name);
+      data.append("username", formData.username);
+      data.append("email", formData.email);
+      data.append("password", formData.password);
+      data.append("role", formData.role);
       if (formData.profile_image) {
-        data.append('profile_image', formData.profile_image);
+        data.append("profile_image", formData.profile_image);
       }
 
-      const res = await axios.post(`${process.env.REACT_APP_API_URL}/api/auth/register`, data, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      });
+      const res = await axios.post(
+        `${process.env.REACT_APP_API_URL}/api/auth/register`,
+        data,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
 
       if (res.status === 201 || res.status === 200) {
-        navigate('/login');
+        navigate("/login");
       }
     } catch (err) {
-      const msg = err.response?.data?.message || 'Registration failed';
+      const msg = err.response?.data?.message || "Registration failed";
       setApiError(msg);
     } finally {
       setIsSubmitting(false);
@@ -110,10 +118,19 @@ const Register = () => {
                 id="profile_image"
                 name="profile_image"
                 accept="image/*"
-                onChange={(e) => setFormData((prev) => ({ ...prev, profile_image: e.target.files[0] }))}
+                onChange={(e) =>
+                  setFormData((prev) => ({
+                    ...prev,
+                    profile_image: e.target.files[0],
+                  }))
+                }
               />
               <label htmlFor="profile_image" className="file-input-label">
-                {formData.profile_image ? formData.profile_image.name : <>{t(`Choose an image...`)}</>}
+                {formData.profile_image ? (
+                  formData.profile_image.name
+                ) : (
+                  <>{t(`Choose an image...`)}</>
+                )}
               </label>
             </div>
           </div>
@@ -127,10 +144,12 @@ const Register = () => {
                 name="first_name"
                 value={formData.first_name}
                 onChange={handleChange}
-                className={errors.first_name ? 'error' : ''}
+                className={errors.first_name ? "error" : ""}
                 placeholder={t("Enter your first name")}
               />
-              {errors.first_name && <span className="error-message">{errors.first_name}</span>}
+              {errors.first_name && (
+                <span className="error-message">{errors.first_name}</span>
+              )}
             </div>
 
             <div className="form-group">
@@ -141,10 +160,12 @@ const Register = () => {
                 name="last_name"
                 value={formData.last_name}
                 onChange={handleChange}
-                className={errors.last_name ? 'error' : ''}
+                className={errors.last_name ? "error" : ""}
                 placeholder={t("Enter your last name")}
               />
-              {errors.last_name && <span className="error-message">{errors.last_name}</span>}
+              {errors.last_name && (
+                <span className="error-message">{errors.last_name}</span>
+              )}
             </div>
           </div>
 
@@ -156,10 +177,12 @@ const Register = () => {
               name="username"
               value={formData.username}
               onChange={handleChange}
-              className={errors.username ? 'error' : ''}
+              className={errors.username ? "error" : ""}
               placeholder={t("Enter username")}
             />
-            {errors.username && <span className="error-message">{errors.username}</span>}
+            {errors.username && (
+              <span className="error-message">{errors.username}</span>
+            )}
           </div>
 
           <div className="form-group">
@@ -170,10 +193,12 @@ const Register = () => {
               name="email"
               value={formData.email}
               onChange={handleChange}
-              className={errors.email ? 'error' : ''}
+              className={errors.email ? "error" : ""}
               placeholder={t("Enter your email")}
             />
-            {errors.email && <span className="error-message">{errors.email}</span>}
+            {errors.email && (
+              <span className="error-message">{errors.email}</span>
+            )}
           </div>
 
           <div className="form-row">
@@ -185,10 +210,12 @@ const Register = () => {
                 name="password"
                 value={formData.password}
                 onChange={handleChange}
-                className={errors.password ? 'error' : ''}
+                className={errors.password ? "error" : ""}
                 placeholder={t("Create a password")}
               />
-              {errors.password && <span className="error-message">{errors.password}</span>}
+              {errors.password && (
+                <span className="error-message">{errors.password}</span>
+              )}
             </div>
 
             <div className="form-group">
@@ -199,33 +226,32 @@ const Register = () => {
                 name="confirmPassword"
                 value={formData.confirmPassword}
                 onChange={handleChange}
-                className={errors.confirmPassword ? 'error' : ''}
+                className={errors.confirmPassword ? "error" : ""}
                 placeholder={t("Confirm your password")}
               />
-              {errors.confirmPassword && <span className="error-message">{errors.confirmPassword}</span>}
+              {errors.confirmPassword && (
+                <span className="error-message">{errors.confirmPassword}</span>
+              )}
             </div>
           </div>
-
-          
 
           <div className="form-group checkbox-group">
             <label className="checkbox-label">
               <input type="checkbox" required className="checkbox-input" />
               <span className="checkbox-custom"></span>
-              <Link to="/terms"> {t(`I agree to the terms.`)}</Link> 
+              <Link to="/terms"> {t(`I agree to the terms.`)}</Link>
             </label>
           </div>
 
-          <button 
-            type="submit" 
-            className="submit-btn"
-            disabled={isSubmitting}
-          >
-            {isSubmitting ? 'Registering...' : 'Register Now'}
+          <button type="submit" className="submit-btn" disabled={isSubmitting}>
+            {isSubmitting ? "Registering..." : "Register Now"}
           </button>
 
           <div className="login-redirect">
-            {t(`Already have an account?`)} <Link to="/login" className="login-link">{t(`Log in here`)}</Link>
+            {t(`Already have an account?`)}{" "}
+            <Link to="/login" className="login-link">
+              {t(`Log in here`)}
+            </Link>
           </div>
         </form>
       </div>

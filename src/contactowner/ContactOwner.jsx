@@ -101,7 +101,7 @@
 import axios from 'axios';
 import './ContactOwner.css';
 import { useEffect, useState } from 'react';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next"; // <-- added this import
 
 function ContactOwner({ listingId, contactType }) {
   const [message, setMessage] = useState('');

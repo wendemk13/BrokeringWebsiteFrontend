@@ -1,7 +1,8 @@
 import React from 'react';
 import './CarCard.css';
 import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next"; // <-- added this import
+
 
 function CarCard({
   id,

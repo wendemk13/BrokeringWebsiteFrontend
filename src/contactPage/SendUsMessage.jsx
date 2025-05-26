@@ -110,7 +110,7 @@ import axios from 'axios';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import './SendUsMessage.css';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next"; // <-- added this import
 
 function SendUsMessage() {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', message: '' });

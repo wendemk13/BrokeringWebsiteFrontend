@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import CarCard from './CarCard';
 import './ListOfCars.css';
 import axios from 'axios';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next"; // <-- added this import
 
 function ListOfCars() {
   const [cars, setCars] = useState([]);

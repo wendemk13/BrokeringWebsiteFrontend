@@ -43,7 +43,7 @@
 import React from 'react';
 import './ContactPage.css';
 import SendUsMessage from './SendUsMessage';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next"; // <-- added this import
 
 const ContactPage = () => {
 

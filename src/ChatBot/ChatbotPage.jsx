@@ -280,7 +280,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import './ChatbotPage.css';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next"; // <-- added this import
 
 const ChatbotPage = () => {
 
