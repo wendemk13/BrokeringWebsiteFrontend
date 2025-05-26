@@ -19,7 +19,7 @@ function Pay({
     i18n.changeLanguage(lng);
   };
   const fronturl =
-    "https://68346d7a92edde0092850cfd--brokeringwebfrontend.netlify.app/";
+    "https://68346d7a92edde0092850cfd--brokeringwebfrontend.netlify.app";
   return (
     <div>
       <form method="POST" action="https://api.chapa.co/v1/hosted/pay">
