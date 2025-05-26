@@ -18,6 +18,8 @@ function Pay({
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
   };
+  const fronturl =
+    "https://68346d7a92edde0092850cfd--brokeringwebfrontend.netlify.app/";
   return (
     <div>
       <form method="POST" action="https://api.chapa.co/v1/hosted/pay">
@@ -44,15 +46,11 @@ function Pay({
           name="logo"
           value="https://chapa.link/asset/images/chapa_swirl.svg"
         />
-        <input
-          type="hidden"
-          name="callback_url"
-          value={`${process.env.REACT_APP_API_URL}/payfailed`}
-        />
+        <input type="hidden" name="callback_url" value={`/payfailed`} />
         <input
           type="hidden"
           name="return_url"
-          value={`${process.env.REACT_APP_API_URL}/paysuccess/${listingtype}/${propertyType}/${propertyId}/${tx_ref}`}
+          value={`${fronturl}/paysuccess/${listingtype}/${propertyType}/${propertyId}/${tx_ref}`}
         />
         {/* <input type="hidden" name="return_url" value={`http://localhost:3000/paysuccess/${txRef1 || "notxref"}`} /> */}
 
