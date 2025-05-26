@@ -408,7 +408,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import './AddCarPage.css'; // You should create a specific CSS file for cars
 import carModels from '../carData.js';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next"; // <-- added this import
 const AddCar = () => {
     const navigate = useNavigate();
     

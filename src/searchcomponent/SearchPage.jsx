@@ -18,7 +18,7 @@ import {
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import axios from "axios";
-import { useTranslation } from "react-i18next";
+import { useTranslation } from "react-i18next"; // <-- added this import
 
 const SearchPage = () => {
   const [searchTerm, setSearchTerm] = useState("");

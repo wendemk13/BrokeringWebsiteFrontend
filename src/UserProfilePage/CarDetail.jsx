@@ -4,7 +4,7 @@ import { useParams, useNavigate, Link } from 'react-router-dom';
 import './CarDetailPage.css'; // You can create a similar CSS file as HouseDetailPage
 import ContactOwner from '../contactowner/ContactOwner';
 import Pay from '../chapa/Pay';
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next"; // <-- added this import
 
 const CarDetail = () => {
   const { id } = useParams();
