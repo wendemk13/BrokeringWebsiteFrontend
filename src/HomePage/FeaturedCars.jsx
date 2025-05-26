@@ -143,7 +143,7 @@ function FeaturedCars() {
         }
       } catch (error) {
         console.error('Error fetching cars:', error);
-        setError('Failed to load featured cars');
+        setError(t('Failed to load featured cars'));
       } finally {
         setLoading(false);
       }

@@ -212,5 +212,7 @@
   "for Houses": "ቤቶች",
   "Add New Car Listing": "አዲስ የመኪና ዝርዝር ያክሉ",
   "Create Car Listing": "የመኪና ዝርዝር መዝግብ",
-  "rejected": "የተከለከለ"
+  "rejected": "የተከለከለ",
+  "Failed to load featured houses":"ተለይተው የቀረቡ ቤቶችን መጫን አልተሳካም።",
+  "Failed to load featured cars":"ተለይተው የቀረቡ መኪናዎችን መጫን አልተሳካም።"
 }

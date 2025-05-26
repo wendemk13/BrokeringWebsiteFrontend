@@ -25,7 +25,7 @@ function FeaturedHouses() {
         }
       } catch (error) {
         console.error('Error fetching houses:', error);
-        setError('Failed to load featured houses');
+        setError(t('Failed to load featured houses'));
       } finally {
         setLoading(false);
       }
