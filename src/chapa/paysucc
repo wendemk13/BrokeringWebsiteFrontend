@@ -1,0 +1,268 @@
+// import React, { useEffect, useState } from 'react';
+// import { useParams } from 'react-router-dom';
+// import axios from 'axios'; // ✅ Import axios
+// import './PaymentSuccessPage.css';
+
+// const PaymentSuccessPage = () => {
+//   const { txRef } = useParams(); // Get txRef from URL
+//   const [data, setData] = useState(null);
+//   const [error, setError] = useState('');
+//   const [loading, setLoading] = useState(true);
+
+//   useEffect(() => {
+//     const fetchPayment = async () => {
+//       try {
+//         const res = await axios.get(`http://localhost:5000/api/payment/verify/${txRef}`);
+//         console.log(res.data);
+
+//         if (res.data.status === 'success') {
+//           setData(res.data.data);
+//         } else {
+//           setError('Failed to verify payment');
+//         }
+//       } catch (err) {
+//         setError('Something went wrong');
+//         console.error(err);
+//       } finally {
+//         setLoading(false);
+//       }
+//     };
+
+//     fetchPayment();
+//   }, [txRef]);
+
+//   if (loading) return <h2>Verifying payment...</h2>;
+//   if (error) return <h2>{error}</h2>;
+
+//   return (
+//     <div>
+//       <h2>Payment Successful!</h2>
+//       <p>Reference: {data.tx_ref}</p>
+//       <p>Amount: {data.amount} {data.currency}</p>
+//       <p>Status: {data.status}</p>
+//       <p>Date: {new Date(data.created_at).toLocaleString()}</p>
+//     </div>
+//   );
+// };
+
+// export default PaymentSuccessPage;
+
+import React, { useEffect, useState } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { motion } from 'framer-motion';
+import { FiCheckCircle, FiDownload, FiPrinter, FiShare2, FiClock, FiDollarSign, FiCalendar } from 'react-icons/fi';
+import './PaymentSuccessPage.css';
+
+const PaymentSuccessPage = () => {
+  const { txRef } = useParams();
+  const navigate = useNavigate();
+  const [paymentData, setPaymentData] = useState(null);
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(true);
+  const [relatedServices, setRelatedServices] = useState([]);
+  const [downloadLoading, setDownloadLoading] = useState(false);
+
+  useEffect(() => {
+    const fetchPaymentDetails = async () => {
+      try {
+       
+               const res = await axios.get(`http://localhost:5000/api/payment/verify/${txRef}`);
+
+        if (res.data.status === 'success') {
+          setPaymentData(res.data.data);
+        } else {
+          setError('Payment verification failed');
+        }
+      } catch (err) {
+        setError(err.response?.data?.message || 'Something went wrong');
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPaymentDetails();
+  }, [txRef]);
+
+  const handleDownloadReceipt = async () => {
+    setDownloadLoading(true);
+    try {
+      const response = await axios.get(
+        `http://localhost:5000/api/payment/verify/reference2`,
+        { responseType: 'blob' }
+      );
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement('a');
+      link.href = url;
+      link.setAttribute('download', `receipt_${txRef}.pdf`);
+      document.body.appendChild(link);
+      link.click();
+    } catch (err) {
+      setError('Failed to download receipt');
+    } finally {
+      setDownloadLoading(false);
+    }
+  };
+
+  const handleShare = () => {
+    if (navigator.share) {
+      navigator.share({
+        title: 'Payment Receipt',
+        text: `I just made a payment of ${paymentData.amount} ${paymentData.currency}. Reference: ${paymentData.tx_ref}`,
+        url: window.location.href,
+      }).catch(() => {
+        alert('Sharing failed. Please try again.');
+      });
+    } else {
+      // Fallback for browsers that don't support Web Share API
+      navigator.clipboard.writeText(window.location.href);
+      alert('Link copied to clipboard!');
+    }
+  };
+
+  if (loading) {
+    return (
+      <div className="loading-container">
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+          className="loading-spinner"
+        />
+        <p>Verifying your payment...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="error-container">
+        <div className="error-icon">⚠️</div>
+        <h2>{error}</h2>
+        <button onClick={() => navigate('/')} className="primary-button">
+          Return Home
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.5 }}
+      className="payment-success-container"
+    >
+      <div className="success-header">
+        <motion.div
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ type: 'spring', stiffness: 260, damping: 20 }}
+        >
+          <FiCheckCircle className="success-icon" />
+        </motion.div>
+        <h1>Payment Successful!</h1>
+        <p className="success-message">
+          Thank you for your payment. Your transaction has been completed successfully.
+        </p>
+      </div>
+
+      <div className="receipt-card">
+        <h3>Payment Receipt</h3>
+        
+        <div className="receipt-details">
+          <div className="detail-item">
+            <FiDollarSign className="detail-icon" />
+            <div>
+              <span className="detail-label">Amount</span>
+              <span className="detail-value">
+                {paymentData.amount} {paymentData.currency}
+              </span>
+            </div>
+          </div>
+          
+          <div className="detail-item">
+            <FiCalendar className="detail-icon" />
+            <div>
+              <span className="detail-label">Date</span>
+              <span className="detail-value">
+                {new Date(paymentData.created_at).toLocaleString()}
+              </span>
+            </div>
+          </div>
+          
+          <div className="detail-item">
+            <FiClock className="detail-icon" />
+            <div>
+              <span className="detail-label">Reference</span>
+              <span className="detail-value receipt-ref">{paymentData.tx_ref}</span>
+            </div>
+          </div>
+          
+          <div className="detail-item">
+            <div>
+              <span className="detail-label">Status</span>
+              <span className={`status-badge ${paymentData.status}`}>
+                {paymentData.status}
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div className="receipt-actions">
+          <button 
+            onClick={handleDownloadReceipt} 
+            className="action-button"
+            disabled={downloadLoading}
+          >
+            <FiDownload /> {downloadLoading ? 'Processing...' : 'Download Receipt'}
+          </button>
+          <button onClick={() => window.print()} className="action-button">
+            <FiPrinter /> Print
+          </button>
+          <button onClick={handleShare} className="action-button">
+            <FiShare2 /> Share
+          </button>
+        </div>
+      </div>
+
+      {relatedServices.length > 0 && (
+        <div className="related-services">
+          <h3>You Might Also Like</h3>
+          <div className="services-grid">
+            {relatedServices.map(service => (
+              <motion.div 
+                key={service.id}
+                whileHover={{ y: -5 }}
+                className="service-card"
+                onClick={() => navigate(`/services/${service.id}`)}
+              >
+                <div className="service-icon">{service.icon || '💡'}</div>
+                <h4>{service.name}</h4>
+                <p>{service.description}</p>
+                <span className="service-price">{service.price}</span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <div className="next-steps">
+        <h3>What would you like to do next?</h3>
+        <div className="step-options">
+          <button className="step-option" onClick={() => navigate('/dashboard')}>
+            Go to Dashboard
+          </button>
+          <button className="step-option" onClick={() => navigate('/services')}>
+            Browse More Services
+          </button>
+          <button className="step-option" onClick={() => navigate('/support')}>
+            Contact Support
+          </button>
+        </div>
+      </div>
+    </motion.div>
+  );
+};
+
+export default PaymentSuccessPage;

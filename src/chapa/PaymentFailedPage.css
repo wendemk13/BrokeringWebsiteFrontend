@@ -1,0 +1,52 @@
+.payment-failed-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+    text-align: center;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.failed-icon {
+    font-size: 4rem;
+    color: #f44336;
+    margin-bottom: 1rem;
+}
+
+.possible-reasons {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: #ffebee;
+    border-radius: 8px;
+    text-align: left;
+}
+
+.possible-reasons h3 {
+    margin-top: 0;
+    color: #d32f2f;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.try-again-button {
+    background-color: #f44336;
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.home-button {
+    background-color: #f1f1f1;
+    color: #333;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}

@@ -1,0 +1,238 @@
+/* Featured Section */
+.listof-featured-section {
+    padding: 3rem 1rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Section Header */
+.listof-section-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+
+.listof-section-title {
+    font-size: 2rem;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.listof-section-subtitle {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+    margin: 0;
+}
+
+/* Featured Grid Layout */
+.listof-featured-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    justify-items: center;
+    padding: 0 1rem;
+}
+
+/* Featured Card */
+.listof-featured-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 320px;
+}
+
+.listof-featured-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Image Container */
+.listof-featured-image-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+}
+
+.listof-featured-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.listof-featured-card:hover .listof-featured-img {
+    transform: scale(1.03);
+}
+
+/* Badges */
+.listof-featured-badges {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 2;
+}
+
+.listof-status-badge,
+.listof-type-badge {
+    padding: 5px 10px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.listof-status-badge {
+    background-color: #2ecc71;
+}
+
+.listof-type-badge {
+    background-color: #3498db;
+}
+
+/* Content */
+.listof-featured-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.listof-featured-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.listof-featured-price {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+/* Details */
+.listof-featured-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+    padding: 0.8rem 0;
+    border-top: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
+    margin: 0.5rem 0;
+}
+
+.listof-featured-detail {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.listof-featured-icon {
+    color: #3498db;
+    font-size: 1rem;
+}
+
+/* Buttons */
+.listof-btn {
+    padding: 0.6rem 1.2rem;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.listof-btn-outline {
+    border: 2px solid #3498db;
+    background-color: transparent;
+    color: #3498db;
+    text-align: center;
+}
+
+.listof-btn-outline:hover {
+    background-color: #3498db;
+    color: white;
+}
+
+.listof-btn-primary {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.8rem;
+}
+
+.listof-btn-primary:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* View All */
+.listof-featured-view-all {
+    text-align: center;
+    margin-top: 3rem;
+}
+
+/* Status Messages */
+.listof-loading,
+.listof-error,
+.listof-empty {
+    text-align: center;
+    padding: 2rem;
+    font-size: 1.2rem;
+    color: #2c3e50;
+}
+
+.listof-error {
+    color: #e74c3c;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .listof-featured-section {
+        padding: 2rem 0.5rem;
+    }
+
+    .listof-section-title {
+        font-size: 1.7rem;
+    }
+
+    .listof-section-subtitle {
+        font-size: 1rem;
+    }
+
+    .listof-featured-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .listof-section-title {
+        font-size: 1.5rem;
+    }
+
+    .listof-section-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .listof-featured-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .listof-btn-primary {
+        padding: 0.7rem 1.5rem;
+        font-size: 0.9rem;
+    } }

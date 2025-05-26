@@ -1,0 +1,227 @@
+/* Base Property Card Styles */
+.listof-property-card {
+    background-color: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    width: 100%;
+    max-width: 320px;
+    margin: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #f0f0f0;
+}
+
+.listof-property-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Image Section */
+.listof-property-image-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+}
+
+.listof-property-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.listof-property-card:hover .listof-property-img {
+    transform: scale(1.03);
+}
+
+/* Tags & Badges */
+.listof-property-badge,
+.listof-property-tag {
+    position: absolute;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    color: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+}
+
+.listof-property-badge {
+    top: 12px;
+    right: 12px;
+    background-color: #ff5a5f;
+}
+
+.listof-property-tag {
+    top: 12px;
+    left: 12px;
+    background-color: rgba(52, 152, 219, 0.9);
+}
+
+.listof-property-badge.sale {
+    background-color: #2ecc71;
+}
+
+.listof-property-badge.rent {
+    background-color: #3498db;
+}
+
+.listof-property-badge.sold {
+    background-color: #7f8c8d;
+}
+
+.listof-property-badge.featured {
+    background-color: #f39c12;
+}
+
+/* Content Section */
+.listof-property-content {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex-grow: 1;
+}
+
+.listof-property-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.listof-property-price {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #2c3e50;
+}
+
+.listof-property-address {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+    margin-bottom: 4px;
+}
+
+/* Features Section */
+.listof-property-features {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #555;
+    padding: 12px 0;
+    border-top: 1px solid #f0f0f0;
+    border-bottom: 1px solid #f0f0f0;
+    margin: 12px 0;
+}
+
+.listof-property-feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.listof-property-icon {
+    color: #3498db;
+    font-size: 1.1rem;
+}
+
+.listof-property-feature-value {
+    font-weight: 600;
+}
+
+.listof-property-feature-label {
+    font-size: 0.8rem;
+    color: #7f8c8d;
+}
+
+/* Footer */
+.listof-property-footer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: auto;
+}
+
+.listof-btn-outline {
+    padding: 8px 16px;
+    border: 2px solid #3498db;
+    background-color: transparent;
+    color: #3498db;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    text-align: center;
+}
+
+.listof-btn-outline:hover {
+    background-color: #3498db;
+    color: #fff;
+    transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .listof-property-card {
+        max-width: 100%;
+        margin: 0.5rem 0;
+    }
+
+    .listof-property-content {
+        padding: 12px;
+    }
+
+    .listof-property-title {
+        font-size: 1.1rem;
+    }
+
+    .listof-property-price {
+        font-size: 1.2rem;
+    }
+
+    .listof-property-features {
+        padding: 10px 0;
+    }
+
+    .listof-btn-outline {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+
+    .listof-property-badge,
+    .listof-property-tag {
+        font-size: 0.7rem;
+        padding: 4px 8px;
+    }
+
+    .listof-property-content {
+        gap: 8px;
+    }
+
+    .listof-property-feature {
+        font-size: 0.85rem;
+    }
+
+    .listof-property-features {
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .listof-property-feature {
+        flex: 1 1 30%;
+    }
+}
+

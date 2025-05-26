@@ -1,0 +1,64 @@
+.message-detail {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.back-button {
+    background: none;
+    border: none;
+    color: #1976d2;
+    cursor: pointer;
+    font-size: 16px;
+    margin-bottom: 20px;
+    padding: 5px 0;
+}
+
+.back-button:hover {
+    text-decoration: underline;
+}
+
+.message-detail h2 {
+    color: #333;
+    margin-bottom: 25px;
+}
+
+.message-content {
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.message-field {
+    display: flex;
+    margin-bottom: 15px;
+    align-items: flex-start;
+}
+
+.message-field.full-width {
+    flex-direction: column;
+}
+
+.field-label {
+    font-weight: bold;
+    color: #333;
+    min-width: 100px;
+}
+
+.field-value {
+    color: #555;
+    flex-grow: 1;
+}
+
+.message-text {
+    white-space: pre-line;
+    line-height: 1.6;
+    margin-top: 10px;
+}
+
+.error {
+    color: #d32f2f;
+    padding: 15px;
+    background-color: #ffebee;
+    border-radius: 4px; }

@@ -1,0 +1,223 @@
+
+.admin-approval-card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    padding: 1.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.admin-approval-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.admin-approval-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin: 0;
+}
+
+.admin-approval-count {
+    background: #edf2f7;
+    color: #4a5568;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+
+.admin-approval-empty {
+    text-align: center;
+    padding: 2rem;
+    color: #a0aec0;
+    font-size: 0.95rem;
+}
+
+
+.admin-approval-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: #718096;
+    padding: 2rem;
+}
+
+
+.admin-approval-error {
+    color: #e53e3e;
+    padding: 2rem;
+    text-align: center;
+}
+
+
+.admin-approval-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 1;
+}
+
+
+.admin-approval-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: #f8fafc;
+    border-radius: 10px;
+    transition: all 0.2s ease;
+}
+
+.admin-approval-item:hover {
+    background: #f0f5ff;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+
+.admin-approval-image-container {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    flex-shrink: 0;
+}
+
+.admin-approval-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.admin-approval-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.8rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.admin-approval-badge-house {
+    background: #3182ce;
+}
+
+.admin-approval-badge-car {
+    background: #dd6b20;
+}
+
+
+.admin-approval-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.admin-approval-item-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #2d3748;
+    margin: 0 0 0.25rem 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.admin-approval-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: #718096;
+}
+
+.admin-approval-price {
+    font-weight: 600;
+    color: #2b6cb0;
+}
+
+.admin-approval-specs {
+    color: #4a5568;
+}
+
+
+.admin-approval-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-shrink: 0;
+}
+
+.admin-approval-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.admin-approval-btn span {
+    display: none;
+}
+
+.admin-approval-btn-approve {
+    background: #38a169;
+    color: white;
+}
+
+.admin-approval-btn-approve:hover {
+    background: #2f855a;
+}
+
+.admin-approval-btn-reject {
+    background: #e53e3e;
+    color: white;
+}
+
+.admin-approval-btn-reject:hover {
+    background: #c53030;
+}
+
+
+@media (min-width: 768px) {
+    .admin-approval-btn span {
+        display: inline;
+    }
+}
+
+@media (max-width: 576px) {
+    .admin-approval-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .admin-approval-image-container {
+        width: 100%;
+        height: 120px;
+    }
+
+    .admin-approval-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+}

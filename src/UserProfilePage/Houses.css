@@ -1,0 +1,48 @@
+.houses-container {
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.houses-container h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.house-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.house-card {
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.house-card:hover {
+    transform: scale(1.02);
+}
+
+.house-image {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.house-info {
+    padding: 15px;
+}
+
+.house-info h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+}
+
+.house-info p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #555;
+}

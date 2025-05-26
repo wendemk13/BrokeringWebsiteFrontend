@@ -1,0 +1,22 @@
+.setting-container{
+    background-color: beige;
+    width: 100%;
+    height: 100vh;
+    display: flex;flex-direction: column;gap: 5px;align-items: center;
+
+}
+.setting-container Link{
+    margin-top: 10px;
+    width: 100px;
+    border: 1px solid black;
+}
+
+
+.language-select {
+    margin-top: 1rem;
+}
+
+.language-select select {
+    padding: 0.4rem;
+    border-radius: 5px;
+}

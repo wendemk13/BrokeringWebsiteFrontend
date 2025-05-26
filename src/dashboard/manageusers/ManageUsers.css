@@ -1,0 +1,153 @@
+
+.stats-row {
+    margin-bottom: 20px;
+}
+
+.stat-icon {
+    font-size: 24px;
+    margin-right: 10px;
+}
+
+.stat-icon.active {
+    color: #52c41a;
+}
+
+.stat-icon.banned {
+    color: #f5222d;
+}
+
+.stat-icon.pending {
+    color: #faad14;
+}
+
+.stat-value {
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.activity-card {
+    margin-top: 20px;
+}
+
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.table-filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.search-bar {
+    width: 300px;
+}
+
+.filter-select {
+    min-width: 150px;
+}
+
+
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-card {
+    margin-bottom: 20px;
+}
+
+.profile-tabs .ant-tabs-nav {
+    margin-bottom: 20px;
+}
+
+.activity-timeline {
+    padding: 20px;
+}
+
+
+.ban-form {
+    margin-top: 20px;
+}
+
+.user-info {
+    margin-bottom: 20px;
+}
+
+
+@media (max-width: 768px) {
+    .stats-row .ant-col {
+        margin-bottom: 16px;
+    }
+
+    .table-filters {
+        flex-direction: column;
+    }
+
+    .search-bar,
+    .filter-select {
+        width: 100%;
+    } }
+
+
+
+        .admin-container {
+            padding: 20px;
+            background: #f5f5f5;
+            min-height: 100vh;
+        }
+    
+        .loading-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }
+    
+        .stats-row {
+            margin-bottom: 20px;
+        }
+    
+        .stat-icon {
+            font-size: 24px;
+            margin-right: 8px;
+            color: #1890ff;
+        }
+    
+        .stat-icon.active {
+            color: #52c41a;
+        }
+    
+        .stat-icon.banned {
+            color: #f5222d;
+        }
+    
+        .stat-icon.pending {
+            color: #faad14;
+        }
+    
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+    
+        .user-list-card {
+            margin-top: 20px;
+        }
+    
+        @media (max-width: 768px) {
+            .stats-row .ant-col {
+                margin-bottom: 16px;
+            }
+    
+            .stat-value {
+                font-size: 20px;
+            }     }

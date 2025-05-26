@@ -1,0 +1,100 @@
+.contact-owner-container {
+    max-width: 480px;
+    margin: 2rem auto;
+    padding: 1.5rem 2rem;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.contact-owner-container h2 {
+    margin-bottom: 1rem;
+    color: #333;
+    text-align: center;
+    font-weight: 600;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-textarea {
+    resize: vertical;
+    min-height: 140px;
+    padding: 12px 15px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1.8px solid #ddd;
+    transition: border-color 0.3s ease;
+    font-family: inherit;
+}
+
+.contact-textarea:focus {
+    outline: none;
+    border-color: #1890ff;
+    box-shadow: 0 0 8px rgba(24, 144, 255, 0.3);
+}
+
+.char-count {
+    margin-top: 6px;
+    font-size: 0.875rem;
+    color: #666;
+    text-align: right;
+    font-weight: 500;
+}
+
+.contact-submit-btn {
+    margin-top: 1rem;
+    padding: 12px 0;
+    background-color: #1890ff;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.15s ease;
+    box-shadow: 0 4px 12px rgba(24, 144, 255, 0.4);
+}
+
+.contact-submit-btn:hover:not(:disabled) {
+    background-color: #1071e0;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(16, 113, 224, 0.6);
+}
+
+.contact-submit-btn:disabled {
+    background-color: #a6c8ff;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.status-message {
+    margin-top: 1rem;
+    font-weight: 600;
+    text-align: center;
+    padding: 8px 0;
+    border-radius: 8px;
+}
+
+.status-message.success {
+    color: #2f8f4e;
+    background-color: #d7f4d7;
+    border: 1px solid #2f8f4e;
+}
+
+.status-message.error {
+    color: #d93025;
+    background-color: #f9d4d3;
+    border: 1px solid #d93025;
+}
+
+
+@media (max-width: 520px) {
+    .contact-owner-container {
+        padding: 1rem 1.25rem;
+        max-width: 100%;
+    }
+}

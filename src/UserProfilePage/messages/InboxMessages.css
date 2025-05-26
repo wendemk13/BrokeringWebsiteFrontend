@@ -1,0 +1,73 @@
+.inbox-container {
+    max-width: 700px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.8rem;
+    color: #222;
+}
+
+.message-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.message-card {
+    background: #fdfdfd;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 1.2rem;
+    margin-bottom: 1.2rem;
+    transition: box-shadow 0.3s ease;
+}
+
+.message-card:hover {
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.1);
+}
+
+.message-body {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 0.75rem;
+    white-space: pre-wrap;
+    line-height: 1.6;
+}
+
+.message-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #666;
+    border-top: 1px solid #eee;
+    padding-top: 0.5rem;
+}
+
+.sender-name {
+    color: #0066cc;
+}
+
+.date {
+    color: #999;
+    font-style: italic;
+}
+
+.inbox-status {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #444;
+    margin-top: 3rem;
+}
+
+.inbox-status.error {
+    color: red;
+}

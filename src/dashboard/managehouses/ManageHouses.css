@@ -1,0 +1,83 @@
+
+
+
+.manageHouse-container {
+    padding: 20px;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+}
+
+
+.manageHouse-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.manageHouse-title {
+    margin: 0 !important;
+    color: #333;
+}
+
+.manageHouse-addButton {
+    margin-left: 10px;
+}
+
+
+.manageHouse-stats {
+    margin-bottom: 24px;
+}
+
+.manageHouse-statCard {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.manageHouse-statCard:hover {
+    transform: translateY(-5px);
+}
+
+
+.manageHouse-tableCard {
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+.manageHouse-search {
+    width: 250px;
+}
+
+
+.manageHouse-refreshButton {
+    margin-left: 10px;
+}
+
+
+.manageHouse-table {
+    margin-top: 16px;
+}
+
+.manageHouse-table .ant-table-thead>tr>th {
+    background-color: #f0f2f5;
+    font-weight: 600;
+}
+
+
+@media (max-width: 768px) {
+    .manageHouse-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .manageHouse-addButton {
+        margin-top: 10px;
+        margin-left: 0;
+    }
+
+    .manageHouse-search {
+        width: 100%;
+        margin-bottom: 10px;
+    } }
