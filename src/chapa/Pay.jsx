@@ -18,8 +18,7 @@ function Pay({
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
   };
-  const fronturl =
-    "https://68346d7a92edde0092850cfd--brokeringwebfrontend.netlify.app";
+  const fronturl="http://localhost:5000"
   return (
     <div>
       <form method="POST" action="https://api.chapa.co/v1/hosted/pay">

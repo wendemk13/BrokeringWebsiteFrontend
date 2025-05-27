@@ -37,7 +37,7 @@ function FeaturedHouses() {
   }, []);
 
   if (loading)
-    return <div className="listof-loading">Loading featured houses...</div>;
+    return <div className="listof-loading">{t(`Loading featured houses...`)}</div>;
   if (error) return <div className="listof-error">t{error}</div>;
   if (properties.length === 0)
     return (
