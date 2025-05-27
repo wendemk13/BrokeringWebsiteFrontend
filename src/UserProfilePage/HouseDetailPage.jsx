@@ -14,6 +14,19 @@ const HouseDetailPage = () => {
   const [error, setError] = useState('');
   const [txRef, setTxRef] = useState(''); // For transaction reference
 
+
+  
+    const [showPayment, setShowPayment] = useState(false);
+  
+    const handlePayNow = () => {
+      const user = localStorage.getItem("user"); // or check auth context
+      if (!user) {
+        navigate("/login"); // Redirect if not logged in
+      } else {
+        setShowPayment(true); // Show the payment form
+      }
+    };
+    
    const {t,i18n}=useTranslation();
     const changeLanguage = (lng) => {
       i18n.changeLanguage(lng);
@@ -62,15 +75,15 @@ const HouseDetailPage = () => {
       <div className="house-header">
         <h1>{house.title}</h1>
         <div className="price-tag">
-  ${house.price} {house.ForSellRent === 'Rent' ? `/${t("month")}` : ''}
-</div>
+          ${house.price} {house.ForSellRent === "Rent" ? `/${t("month")}` : ""}
+        </div>
       </div>
 
       <div className="house-gallery">
         <div className="main-image">
-          <img 
-            src={`${process.env.REACT_APP_API_URL}/uploads${house.cover_image}`} 
-            alt={house.title} 
+          <img
+            src={`${process.env.REACT_APP_API_URL}/uploads${house.cover_image}`}
+            alt={house.title}
           />
         </div>
       </div>
@@ -113,13 +126,15 @@ const HouseDetailPage = () => {
 
         <div className="details-section">
           <h2>{t(`Location`)}</h2>
-          <p>{house.address}, {house.location}</p>
+          <p>
+            {house.address}, {house.location}
+          </p>
         </div>
       </div>
-      <div >
+      <div>
         {/* <Link to='/ChapaPaymentForm' firstname={"wende"} lastname={"melake"} email={"wendemk13@gmail.com"} >Payment
         </Link> */}
-        <Pay
+        {/* <Pay
           className="submit-btn"
           fname={"wende"}
           lname={"melake"}
@@ -130,7 +145,26 @@ const HouseDetailPage = () => {
           propertyType={"house"}
 listingtype={house.ForSellRent}
 
-        />
+        /> */}
+
+        <div>
+          {!showPayment ? (
+            <button className="submit-btn" onClick={handlePayNow}>
+              Pay Now
+            </button>
+          ) : (
+            <Pay
+              className="submit-btn"
+              fname={"wende"}
+              lname={"melake"}
+              email={"wendemk13@gmail.com"}
+              amount={house.price}
+              tx_ref={txRef}
+              propertyId={id}
+              propertyType={"house"}
+            />
+          )}
+        </div>
       </div>
 
       <div className="contact-section">
@@ -140,7 +174,6 @@ listingtype={house.ForSellRent}
         <ContactOwner listingId={house.id} contactType="house" />
         {/* </Link> */}
         {/* <h2>Contact Seller</h2> */}
-       
       </div>
     </div>
   );

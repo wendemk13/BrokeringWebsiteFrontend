@@ -18,7 +18,7 @@ function DownloadReceit() {
         
         // Fetch the PDF from the API
         const response = await axios.get(
-          `${process.env.REACT_APP_API_URL}/api/payment/receipt/${txRef}`,
+          `http://localhost:5000/api/payment/receipt/${txRef}`,
           { responseType: 'blob' } // Important for file downloads
         );
 
@@ -97,7 +97,7 @@ function DownloadReceit() {
           <button 
             onClick={() => {
               window.open(
-                `${process.env.REACT_APP_API_URL}/api/payment/receipt/${txRef}`,
+                `http://localhost:5000/api/payment/receipt/${txRef}`,
                 '_blank'
               );
             }}

@@ -14,6 +14,18 @@ const CarDetail = () => {
   const [error, setError] = useState('');
   const [txRef, setTxRef] = useState(''); // For transaction reference
 
+  const [showPayment, setShowPayment] = useState(false);
+
+  const handlePayNow = () => {
+    const user = localStorage.getItem("user"); // or check auth context
+    if (!user) {
+      navigate("/login"); // Redirect if not logged in
+    } else {
+      setShowPayment(true); // Show the payment form
+    }
+  };
+  
+  
   const {t,i18n}=useTranslation();
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
@@ -62,15 +74,17 @@ const CarDetail = () => {
 
       <div className="car-header">
         <h1>{car.title}</h1>
-        <div className="price-tag">${car.price} {car.ForSellRent === 'rent' ? '/month' : ''}</div>
+        <div className="price-tag">
+          ${car.price} {car.ForSellRent === "rent" ? "/month" : ""}
+        </div>
       </div>
 
       {car.cover_image && (
         <div className="car-gallery">
           <div className="main-image">
-            <img 
-              src={`${process.env.REACT_APP_API_URL}/uploads${car.cover_image}`} 
-              alt={car.title} 
+            <img
+              src={`${process.env.REACT_APP_API_URL}/uploads${car.cover_image}`}
+              alt={car.title}
             />
           </div>
         </div>
@@ -99,7 +113,9 @@ const CarDetail = () => {
             </div>
             <div className="property-item">
               <span className="property-label">Mileage:</span>
-              <span className="property-value">{car.mileage.toLocaleString()} miles</span>
+              <span className="property-value">
+                {car.mileage.toLocaleString()} miles
+              </span>
             </div>
             <div className="property-item">
               <span className="property-label">Color:</span>
@@ -124,10 +140,29 @@ const CarDetail = () => {
           </div>
         </div>
       </div>
-      <div >
+      <div>
         {/* <Link to='/ChapaPaymentForm' firstname={"wende"} lastname={"melake"} email={"wendemk13@gmail.com"} >Payment
         </Link> */}
-         <Pay
+        <div>
+          {!showPayment ? (
+            <button className="submit-btn" onClick={handlePayNow}>
+              Pay Now
+            </button>
+          ) : (
+            <Pay
+              fname={"wende"}
+              lname={"melake"}
+              email={"wendemk13@gmail.com"}
+              amount={car.price}
+              tx_ref={txRef}
+              propertyId={id}
+              propertyType={"car"}
+              listingtype={car.ForSellRent}
+            />
+          )}
+        </div>
+
+        {/* <Pay
           className="submit-btn"
           fname={"wende"}
           lname={"melake"}
@@ -137,13 +172,12 @@ const CarDetail = () => {
           propertyId={id}
           propertyType={"car"}
           listingtype={car.ForSellRent}
-        />
+        /> */}
       </div>
       <div className="contact-section">
         {/* <h2>Contact Seller</h2>
         <button className="contact-button">Contact Now</button> */}
         <ContactOwner listingId={car.id} contactType="car" />
-
       </div>
     </div>
   );

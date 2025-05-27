@@ -29,7 +29,7 @@
 
 //   try {
     
-//     await axios.put(`${process.env.REACT_APP_API_URL}/api/house/updatesellstatus/${propertyId}`)||axios.put(`${process.env.REACT_APP_API_URL}/api/car/updatecarsellstatus/${propertyId}`);
+//     await axios.put(`http://localhost:5000/api/house/updatesellstatus/${propertyId}`)||axios.put(`http://localhost:5000/api/car/updatecarsellstatus/${propertyId}`);
 //   } catch (error) {
 //     console.error(error);
 //   } finally {
@@ -46,13 +46,13 @@
 //         const user = JSON.parse(localStorage.getItem('user'));
 //         const userId = user?.id;
 
-//         const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/payment/verify/${txRef}`);
+//         const res = await axios.get(`http://localhost:5000/api/payment/verify/${txRef}`);
 //         if (res.data.status === 'success') {
 //           const payment = res.data.data;
 //           setPaymentData(payment);
 
 //           // Store transaction
-//           await axios.post(`${process.env.REACT_APP_API_URL}/api/payment/store`, {
+//           await axios.post(`http://localhost:5000/api/payment/store`, {
 //             tx_ref: txRef,
 //             amount: payment.amount,
 //             currency: payment.currency,
@@ -77,7 +77,7 @@
 //     setDownloadLoading(true);
 //     try {
 //       const response = await axios.get(
-//         `${process.env.REACT_APP_API_URL}/api/payment/receipt/${txRef}`,
+//         `http://localhost:5000/api/payment/receipt/${txRef}`,
 //         { responseType: 'blob' }
 //       );
 
@@ -230,8 +230,8 @@ const PaymentSuccessPage = () => {
 
       // if(listingtype==='sell'){
         const endpoint = propertyType === 'car' 
-        ? `${process.env.REACT_APP_API_URL}/api/car/updatecarsellstatus/${listingtype}/${propertyId}`
-        : `${process.env.REACT_APP_API_URL}/api/house/updatesellstatus/${listingtype}/${propertyId}`;
+        ? `http://localhost:5000/api/car/updatecarsellstatus/${listingtype}/${propertyId}`
+        : `http://localhost:5000/api/house/updatesellstatus/${listingtype}/${propertyId}`;
       
       await axios.put(endpoint);
       console.log(`${propertyType} status updated successfully`);
@@ -254,15 +254,15 @@ const PaymentSuccessPage = () => {
         const user = JSON.parse(localStorage.getItem('user'));
         const userId = user?.id;
 
-        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/payment/verify/${txRef}`);
+        const res = await axios.get(`http://localhost:5000/api/payment/verify/${txRef}`);
         if (res.data.status === 'success') {
           const payment = res.data.data;
           setPaymentData(payment);
           if(!stored){
-            await axios.post(`${process.env.REACT_APP_API_URL}/api/payment/store`, {
+            await axios.post(`http://localhost:5000/api/payment/store`, {
               tx_ref: txRef,
               amount: payment.amount,
-              currency: payment.currency,
+              currency: "ETB",
               status: payment.status,
               user_id: userId,
               property_id: propertyId,
@@ -294,7 +294,7 @@ const PaymentSuccessPage = () => {
     setDownloadLoading(true);
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/api/payment/receipt/${txRef}`,
+        `http://localhost:5000/api/payment/receipt/${txRef}`,
         { responseType: 'blob' }
       );
 

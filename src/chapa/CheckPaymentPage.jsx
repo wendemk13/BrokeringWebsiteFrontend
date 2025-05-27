@@ -30,7 +30,7 @@ const CheckPaymentPage = () => {
         const user = JSON.parse(localStorage.getItem('user'));
         const userId = user?.id;
 
-        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/payment/verify/${txRef}`);
+        const res = await axios.get(`http://localhost:5000/api/payment/verify/${txRef}`);
         if (res.data.status === 'success') {
           const payment = res.data.data;
           setPaymentData(payment);
@@ -54,7 +54,7 @@ const CheckPaymentPage = () => {
     setDownloadLoading(true);
     try {
       const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/api/payment/receipt/${txRef}`,
+        `http://localhost:5000/api/payment/receipt/${txRef}`,
         { responseType: 'blob' }
       );
 

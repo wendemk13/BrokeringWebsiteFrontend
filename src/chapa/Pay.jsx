@@ -1,5 +1,4 @@
 import React from "react";
-import { useTranslation } from "react-i18next";
 
 function Pay({
   fname,
@@ -14,11 +13,6 @@ function Pay({
   // const txRef="reference2"
   // const txRef1=txRef;
 
-  const { t, i18n } = useTranslation();
-  const changeLanguage = (lng) => {
-    i18n.changeLanguage(lng);
-  };
-  const fronturl="http://localhost:5000"
   return (
     <div>
       <form method="POST" action="https://api.chapa.co/v1/hosted/pay">
@@ -45,17 +39,21 @@ function Pay({
           name="logo"
           value="https://chapa.link/asset/images/chapa_swirl.svg"
         />
-        <input type="hidden" name="callback_url" value={`/payfailed`} />
+        <input
+          type="hidden"
+          name="callback_url"
+          value={`${process.env.REACT_APP_FRONT_URL}/payfailed`}
+        />
         <input
           type="hidden"
           name="return_url"
-          value={`${fronturl}/paysuccess/${listingtype}/${propertyType}/${propertyId}/${tx_ref}`}
+          value={`${process.env.REACT_APP_FRONT_URL}/paysuccess/${listingtype}/${propertyType}/${propertyId}/${tx_ref}`}
         />
         {/* <input type="hidden" name="return_url" value={`http://localhost:3000/paysuccess/${txRef1 || "notxref"}`} /> */}
 
         <input type="hidden" name="meta[title]" value="test" />
         <button type="submit" className="submit-btn">
-          {t(`Pay Now`)}
+          Pay Now
         </button>
       </form>
     </div>
