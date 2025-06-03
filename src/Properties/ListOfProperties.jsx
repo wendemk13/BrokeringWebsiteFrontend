@@ -5,6 +5,7 @@ import './ListOfProperties.css';
 import PropertyCard from './PropertyCard.jsx';
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
+import Footer from '../HomePage/Footer.jsx';
 
 function ListOfProperties() {
   const [properties, setProperties] = useState([]);
@@ -42,23 +43,26 @@ function ListOfProperties() {
   if (properties.length === 0) return <div className="listof-empty">{t(`No properties found.`)}</div>;
 
   return (
-    <section className="listof-section">
-      <div className="listof-section-header">
-        <h2 className="listof-section-title">{t(`List of All Available  Houses`)}</h2>
-        {/* <p className="listof-section-subtitle">Browse our premium listings</p> */}
-      </div>
+    <>
+      <section className="listof-section">
+        <div className="listof-section-header">
+          <h2 className="listof-section-title">
+            {t(`List of All Available  Houses`)}
+          </h2>
+          {/* <p className="listof-section-subtitle">Browse our premium listings</p> */}
+        </div>
 
-      <div className="listof-property-grid">
-        {properties.map((property) => (
-          <PropertyCard 
-            key={property.id}
-            {...property}
-            imageUrl={`${process.env.REACT_APP_API_URL}/uploads${property.cover_image}`}
-          />
-        ))}
-      </div>
+        <div className="listof-property-grid">
+          {properties.map((property) => (
+            <PropertyCard
+              key={property.id}
+              {...property}
+              imageUrl={`${process.env.REACT_APP_API_URL}/uploads${property.cover_image}`}
+            />
+          ))}
+        </div>
 
-      {/* <div className="listof-view-all">
+        {/* <div className="listof-view-all">
         <button 
           onClick={handleViewAll} 
           className="listof-btn listof-btn-primary"
@@ -66,7 +70,10 @@ function ListOfProperties() {
           View All Properties
         </button>
       </div> */}
-    </section>
+      </section>
+
+      <Footer />
+    </>
   );
 }
 

@@ -23,9 +23,9 @@
 //           <div className="section-content">
 //             <h2>From Humble Beginnings</h2>
 //             <p>
-//               Founded in 2020, BetGebeya started as a small team of real estate enthusiasts 
-//               frustrated with the lack of transparency in Ethiopia's property market. Today, 
-//               we're the nation's fastest-growing real estate platform, connecting thousands 
+//               Founded in 2020, BetGebeya started as a small team of real estate enthusiasts
+//               frustrated with the lack of transparency in Ethiopia's property market. Today,
+//               we're the nation's fastest-growing real estate platform, connecting thousands
 //               of buyers and sellers every month.
 //             </p>
 //             <div className="stats-grid">
@@ -47,9 +47,9 @@
 //             </div>
 //           </div>
 //           <div className="section-image">
-//             <img 
-//               src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
-//               alt="Our office" 
+//             <img
+//               src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80"
+//               alt="Our office"
 //             />
 //           </div>
 //         </section>
@@ -59,8 +59,8 @@
 //           <div className="mission-content">
 //             <h2>Our Mission</h2>
 //             <p>
-//               To democratize access to quality housing by creating Africa's most transparent 
-//               and efficient real estate marketplace. We believe everyone deserves a home 
+//               To democratize access to quality housing by creating Africa's most transparent
+//               and efficient real estate marketplace. We believe everyone deserves a home
 //               that matches their dreams and budget.
 //             </p>
 //             <div className="values-grid">
@@ -126,15 +126,15 @@
 
 // export default AboutPage;
 
-
-import React from 'react'
+import React from "react";
+import Footer from "../HomePage/Footer";
 
 function AboutPage() {
   return (
     <div>
-      
+      <Footer />
     </div>
-  )
+  );
 }
 
-export default AboutPage
+export default AboutPage;

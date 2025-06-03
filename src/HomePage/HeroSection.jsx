@@ -40,7 +40,7 @@ function HeroSection() {
   {t('Discover the perfect property or car from our extensive listings across the country. Buy, sell, or rent with ease.')}
 </p>
 
-        <div className="listof-hero-buttons">
+        <div className="listof-hero-buttons" style={{marginTop:"10px"}}>
           {/* <Link to='/houses' className="listof-btn listof-btn-primary">
             Browse Properties
           </Link>

@@ -75,7 +75,8 @@ const HouseDetailPage = () => {
       <div className="house-header">
         <h1>{house.title}</h1>
         <div className="price-tag">
-          ${house.price} {house.ForSellRent === "Rent" ? `/${t("month")}` : ""}
+          {house.price} {t(`ETB`)}{" "}
+          {house.ForSellRent === "Rent" ? `/${t("month")}` : ""}
         </div>
       </div>
 

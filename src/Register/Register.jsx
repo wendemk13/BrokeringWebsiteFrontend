@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import "./Register.css";
 import { useTranslation } from "react-i18next"; // <-- added this import
+import Footer from "../HomePage/Footer";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -95,167 +96,178 @@ const Register = () => {
   };
 
   return (
-    <div className="register-container">
-      <div className="register-card">
-        <div className="register-header">
-          <h1>{t(`Create an Account`)}</h1>
-          <p>{t(`Join our platform today`)}</p>
-        </div>
-
-        {apiError && (
-          <div className="alert error">
-            <strong>Registration Error:</strong> {apiError}
-            <p>Please check your details and try again</p>
+    <>
+      <div className="register-container">
+        <div className="register-card">
+          <div className="register-header">
+            <h1>{t(`Create an Account`)}</h1>
+            <p>{t(`Join our platform today`)}</p>
           </div>
-        )}
 
-        <form onSubmit={handleSubmit} className="register-form">
-          <div className="form-group profile-image-group">
-            <label>{t(`Profile Image (optional)`)}</label>
-            <div className="file-input-wrapper">
-              <input
-                type="file"
-                id="profile_image"
-                name="profile_image"
-                accept="image/*"
-                onChange={(e) =>
-                  setFormData((prev) => ({
-                    ...prev,
-                    profile_image: e.target.files[0],
-                  }))
-                }
-              />
-              <label htmlFor="profile_image" className="file-input-label">
-                {formData.profile_image ? (
-                  formData.profile_image.name
-                ) : (
-                  <>{t(`Choose an image...`)}</>
+          {apiError && (
+            <div className="alert error">
+              <strong>Registration Error:</strong> {apiError}
+              <p>Please check your details and try again</p>
+            </div>
+          )}
+
+          <form onSubmit={handleSubmit} className="register-form">
+            <div className="form-group profile-image-group">
+              <label>{t(`Profile Image (optional)`)}</label>
+              <div className="file-input-wrapper">
+                <input
+                  type="file"
+                  id="profile_image"
+                  name="profile_image"
+                  accept="image/*"
+                  onChange={(e) =>
+                    setFormData((prev) => ({
+                      ...prev,
+                      profile_image: e.target.files[0],
+                    }))
+                  }
+                />
+                <label htmlFor="profile_image" className="file-input-label">
+                  {formData.profile_image ? (
+                    formData.profile_image.name
+                  ) : (
+                    <>{t(`Choose an image...`)}</>
+                  )}
+                </label>
+              </div>
+            </div>
+
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="first_name">{t(`First Name*`)}</label>
+                <input
+                  type="text"
+                  id="first_name"
+                  name="first_name"
+                  value={formData.first_name}
+                  onChange={handleChange}
+                  className={errors.first_name ? "error" : ""}
+                  placeholder={t("Enter your first name")}
+                />
+                {errors.first_name && (
+                  <span className="error-message">{errors.first_name}</span>
                 )}
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="last_name">{t(`Last Name*`)}</label>
+                <input
+                  type="text"
+                  id="last_name"
+                  name="last_name"
+                  value={formData.last_name}
+                  onChange={handleChange}
+                  className={errors.last_name ? "error" : ""}
+                  placeholder={t("Enter your last name")}
+                />
+                {errors.last_name && (
+                  <span className="error-message">{errors.last_name}</span>
+                )}
+              </div>
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="username">{t(`Username*`)}</label>
+              <input
+                type="text"
+                id="username"
+                name="username"
+                value={formData.username}
+                onChange={handleChange}
+                className={errors.username ? "error" : ""}
+                placeholder={t("Enter username")}
+              />
+              {errors.username && (
+                <span className="error-message">{errors.username}</span>
+              )}
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="email">{t(`Email*`)}</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                className={errors.email ? "error" : ""}
+                placeholder={t("Enter your email")}
+              />
+              {errors.email && (
+                <span className="error-message">{errors.email}</span>
+              )}
+            </div>
+
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="password">{t(`Password*`)}</label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  value={formData.password}
+                  onChange={handleChange}
+                  className={errors.password ? "error" : ""}
+                  placeholder={t("Create a password")}
+                />
+                {errors.password && (
+                  <span className="error-message">{errors.password}</span>
+                )}
+              </div>
+
+              <div className="form-group">
+                <label htmlFor="confirmPassword">
+                  {t(`Confirm Password*`)}
+                </label>
+                <input
+                  type="password"
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  value={formData.confirmPassword}
+                  onChange={handleChange}
+                  className={errors.confirmPassword ? "error" : ""}
+                  placeholder={t("Confirm your password")}
+                />
+                {errors.confirmPassword && (
+                  <span className="error-message">
+                    {errors.confirmPassword}
+                  </span>
+                )}
+              </div>
+            </div>
+
+            <div className="form-group checkbox-group">
+              <label className="checkbox-label">
+                <input type="checkbox" required className="checkbox-input" />
+                <span className="checkbox-custom"></span>
+                <Link to="/terms"> {t(`I agree to the terms.`)}</Link>
               </label>
             </div>
-          </div>
 
-          <div className="form-row">
-            <div className="form-group">
-              <label htmlFor="first_name">{t(`First Name*`)}</label>
-              <input
-                type="text"
-                id="first_name"
-                name="first_name"
-                value={formData.first_name}
-                onChange={handleChange}
-                className={errors.first_name ? "error" : ""}
-                placeholder={t("Enter your first name")}
-              />
-              {errors.first_name && (
-                <span className="error-message">{errors.first_name}</span>
-              )}
+            <button
+              type="submit"
+              className="submit-btn"
+              disabled={isSubmitting}
+            >
+              {isSubmitting ? "Registering..." : "Register Now"}
+            </button>
+
+            <div className="login-redirect">
+              {t(`Already have an account?`)}{" "}
+              <Link to="/login" className="login-link">
+                {t(`Log in here`)}
+              </Link>
             </div>
-
-            <div className="form-group">
-              <label htmlFor="last_name">{t(`Last Name*`)}</label>
-              <input
-                type="text"
-                id="last_name"
-                name="last_name"
-                value={formData.last_name}
-                onChange={handleChange}
-                className={errors.last_name ? "error" : ""}
-                placeholder={t("Enter your last name")}
-              />
-              {errors.last_name && (
-                <span className="error-message">{errors.last_name}</span>
-              )}
-            </div>
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="username">{t(`Username*`)}</label>
-            <input
-              type="text"
-              id="username"
-              name="username"
-              value={formData.username}
-              onChange={handleChange}
-              className={errors.username ? "error" : ""}
-              placeholder={t("Enter username")}
-            />
-            {errors.username && (
-              <span className="error-message">{errors.username}</span>
-            )}
-          </div>
-
-          <div className="form-group">
-            <label htmlFor="email">{t(`Email*`)}</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              className={errors.email ? "error" : ""}
-              placeholder={t("Enter your email")}
-            />
-            {errors.email && (
-              <span className="error-message">{errors.email}</span>
-            )}
-          </div>
-
-          <div className="form-row">
-            <div className="form-group">
-              <label htmlFor="password">{t(`Password*`)}</label>
-              <input
-                type="password"
-                id="password"
-                name="password"
-                value={formData.password}
-                onChange={handleChange}
-                className={errors.password ? "error" : ""}
-                placeholder={t("Create a password")}
-              />
-              {errors.password && (
-                <span className="error-message">{errors.password}</span>
-              )}
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="confirmPassword">{t(`Confirm Password*`)}</label>
-              <input
-                type="password"
-                id="confirmPassword"
-                name="confirmPassword"
-                value={formData.confirmPassword}
-                onChange={handleChange}
-                className={errors.confirmPassword ? "error" : ""}
-                placeholder={t("Confirm your password")}
-              />
-              {errors.confirmPassword && (
-                <span className="error-message">{errors.confirmPassword}</span>
-              )}
-            </div>
-          </div>
-
-          <div className="form-group checkbox-group">
-            <label className="checkbox-label">
-              <input type="checkbox" required className="checkbox-input" />
-              <span className="checkbox-custom"></span>
-              <Link to="/terms"> {t(`I agree to the terms.`)}</Link>
-            </label>
-          </div>
-
-          <button type="submit" className="submit-btn" disabled={isSubmitting}>
-            {isSubmitting ? "Registering..." : "Register Now"}
-          </button>
-
-          <div className="login-redirect">
-            {t(`Already have an account?`)}{" "}
-            <Link to="/login" className="login-link">
-              {t(`Log in here`)}
-            </Link>
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
-    </div>
+      <Footer />
+    </>
   );
 };
 

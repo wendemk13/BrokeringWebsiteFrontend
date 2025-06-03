@@ -90,7 +90,7 @@ function FeaturedHouses() {
             <div className="listof-featured-content">
               <h3 className="listof-featured-title">{property.title}</h3>
               <div className="listof-featured-price">
-                ${property.price.toLocaleString()}{" "}
+                {property.price.toLocaleString()} {t(`ETB`)}
                 {property.ForSellRent === "Rent" ? "/month" : ""}
               </div>
               <div className="listof-featured-address">

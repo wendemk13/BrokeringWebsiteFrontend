@@ -75,7 +75,8 @@ const CarDetail = () => {
       <div className="car-header">
         <h1>{car.title}</h1>
         <div className="price-tag">
-          ${car.price} {car.ForSellRent === "rent" ? "/month" : ""}
+          {car.price} {t(`ETB`)}
+          {car.ForSellRent === "rent" ? "/month" : ""}
         </div>
       </div>
 

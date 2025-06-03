@@ -44,6 +44,7 @@ import React from 'react';
 import './ContactPage.css';
 import SendUsMessage from './SendUsMessage';
 import { useTranslation } from "react-i18next"; // <-- added this import
+import Footer from '../HomePage/Footer';
 
 const ContactPage = () => {
 
@@ -54,18 +55,23 @@ const ContactPage = () => {
           i18n.changeLanguage(lng);
         };
   return (
-    <div className="listof-contact-page">
-      {/* Hero Section */}
-      <section className="listof-contact-hero">
-        <div className="listof-hero-content">
-          <h1 className="listof-hero-title">{t(`Connect With Us`)}</h1>
-          <p className="listof-hero-subtitle">{t(`We're here to help you find your dream property`)}</p>
-        </div>
-      </section>
+    <>
+      <div className="listof-contact-page">
+        {/* Hero Section */}
+        <section className="listof-contact-hero">
+          <div className="listof-hero-content">
+            <h1 className="listof-hero-title">{t(`Connect With Us`)}</h1>
+            <p className="listof-hero-subtitle">
+              {t(`We're here to help you find your dream property`)}
+            </p>
+          </div>
+        </section>
 
-      {/* Main Content */}
-      <SendUsMessage />
-    </div>
+        {/* Main Content */}
+        <SendUsMessage />
+      </div>
+      <Footer />
+    </>
   );
 };
 

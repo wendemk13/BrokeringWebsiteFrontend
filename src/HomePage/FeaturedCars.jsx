@@ -186,7 +186,7 @@ function FeaturedCars() {
             </div>
             <div className="listof-featured-content">
               <h3 className="listof-featured-title">{car.make} {car.model} ({car.year})</h3>
-              <div className="listof-featured-price">${car.price.toLocaleString()}</div>
+              <div className="listof-featured-price">{car.price.toLocaleString()} {t(`ETB`)}</div>
               <div className="listof-featured-details">
                 <div className="listof-featured-detail">
                   <i className="fas fa-tachometer-alt listof-featured-icon"></i>

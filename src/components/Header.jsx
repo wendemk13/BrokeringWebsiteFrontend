@@ -55,8 +55,6 @@
 //     navigate('/');
 //   };
 
-
-
 //   return (
 //     <>
 //     {loading && <div className="header-loading">Loading...</div>}
@@ -87,8 +85,8 @@
 //               {user ? (
 //                 <>
 //                   <span className="header-username">{user.username}</span>
-//                   <Link 
-//                     to={user.role === 'admin' ? '/admindashboard' : '/userprofilepage'} 
+//                   <Link
+//                     to={user.role === 'admin' ? '/admindashboard' : '/userprofilepage'}
 //                     className="header-profile-link"
 //                   >
 //                     <div className="header-profile-image">
@@ -96,7 +94,7 @@
 //                         <img src={profileImage} alt="Profile" />
 //                       ) : (
 //                         <div className="header-profile-placeholder">
-//                           <FontAwesomeIcon icon={faUser} /> 
+//                           <FontAwesomeIcon icon={faUser} />
 //                         </div>
 //                       )}
 //                     </div>
@@ -183,49 +181,42 @@
 
 // export default Header;
 
-
-
-
-
-
-
-
 import { useTranslation } from "react-i18next"; // <-- added this import
 
-
-import React, { useState } from 'react';
-import './Header.css';
-import { Link } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faRobot, faBars, faTimes, faUser } from '@fortawesome/free-solid-svg-icons';
-import { useAuth } from '../contexts/authContext.js';
-import { useEffect } from 'react';
+import React, { useState } from "react";
+import "./Header.css";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faRobot,
+  faBars,
+  faTimes,
+  faUser,
+} from "@fortawesome/free-solid-svg-icons";
+import { useAuth } from "../contexts/authContext.js";
+import { useEffect } from "react";
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const { user, profileImage, loading, error, logout } = useAuth();
 
-
-
   const { t, i18n } = useTranslation();
-  const [selectedLang, setSelectedLang] = useState(localStorage.getItem('preferredLang') || 'en');
+  const [selectedLang, setSelectedLang] = useState(
+    localStorage.getItem("preferredLang") || "en"
+  );
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
-    localStorage.setItem('preferredLang', lng);
+    localStorage.setItem("preferredLang", lng);
     setSelectedLang(lng);
   };
 
   useEffect(() => {
-    const preferredLang = localStorage.getItem('preferredLang');
+    const preferredLang = localStorage.getItem("preferredLang");
     if (preferredLang) {
       i18n.changeLanguage(preferredLang);
     }
   }, [i18n]);
-
-
-
-
 
   // const changeLanguage = (lng) => {
   //   i18n.changeLanguage(lng);
@@ -233,7 +224,7 @@ function Header() {
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
-    document.body.style.overflow = menuOpen ? 'auto' : 'hidden';
+    document.body.style.overflow = menuOpen ? "auto" : "hidden";
   };
 
   const handleMobileLogout = () => {
@@ -250,30 +241,37 @@ function Header() {
         <div className="header-container">
           <div className="header-logo">
             <Link to="/">
-              <h1>{t(`Bet`)}<span>{t(`Gebeya`)}</span></h1>
+              <h1>
+                {t(`Bet`)}
+                <span>{t(`Gebeya`)}</span>
+              </h1>
             </Link>
           </div>
 
           <div className="header-desktop-nav">
             <nav className="header-nav-links">
-              <Link to='/' className="header-active">{t(`Home`)}</Link>
-              <Link to='/properties'>{t(`Houses`)}</Link>
-              <Link to='/cars'>{t(`Cars`)}</Link>
-              <Link to='/about'>{t(`About`)}</Link>
-              <Link to='/contact'>{t(`Contact`)}</Link>
-             
-              
+              <Link to="/" className="header-active">
+                {t(`Home`)}
+              </Link>
+              <Link to="/properties">{t(`Houses`)}</Link>
+              <Link to="/cars">{t(`Cars`)}</Link>
+              <Link to="/about">{t(`About`)}</Link>
+              <Link to="/contact">{t(`Contact`)}</Link>
             </nav>
 
             <div className="header-user-actions">
-              <Link to='/chatbot' className="header-btn header-btn-chatbot">
+              <Link to="/chatbot" className="header-btn header-btn-chatbot">
                 <FontAwesomeIcon icon={faRobot} /> {t(`Support`)}
               </Link>
               {user ? (
                 <>
                   <span className="header-username">{user.username}</span>
-                  <Link 
-                    to={user.role === 'admin' ? '/admindashboard' : '/userprofilepage'} 
+                  <Link
+                    to={
+                      user.role === "admin"
+                        ? "/admindashboard"
+                        : "/userprofilepage"
+                    }
                     className="header-profile-link"
                   >
                     <div className="header-profile-image">
@@ -281,35 +279,45 @@ function Header() {
                         <img src={profileImage} alt="Profile" />
                       ) : (
                         <div className="header-profile-placeholder">
-                          <FontAwesomeIcon icon={faUser} /> 
+                          <FontAwesomeIcon icon={faUser} />
                         </div>
                       )}
                     </div>
                   </Link>
-                  <button className="header-btn header-btn-outline" onClick={logout}>
+                  <button
+                    className="header-btn header-btn-outline"
+                    onClick={logout}
+                  >
                     <i className="fas fa-sign-out-alt"></i> {t(`Logout`)}
                   </button>
                 </>
               ) : (
                 <>
-                {/* <Link>
+                  {/* <Link>
       <button onClick={() => changeLanguage('en')}>English</button>
       <button onClick={() => changeLanguage('am')}>Amharic</button>
     </Link> */}
-    <Link >
-        <select
-          id="language"
-          value={selectedLang}
-          onChange={(e) => changeLanguage(e.target.value)}
-        >
-          <option value="en">{t(`English`)}</option>
-          <option value="am">{t(`Amharic`)}</option>
-        </select>
-      </Link>
+                  {/* <Link> */}
+                  <select
+                    style={{ paddingTop: 3, paddingBottom: 3 }}
+                    id="language"
+                    value={selectedLang}
+                    onChange={(e) => changeLanguage(e.target.value)}
+                  >
+                    {/* <option value="en">{t(`English`)}</option>
+                      <option value="am">{t(`Amharic`)}</option> 
+                      */}
+                    <option value="en">{t("English")}</option>
+                    <option value="am">{t("Amharic")}</option>
+                  </select>
+                  {/* </Link> */}
                   <Link to="/login" className="header-btn header-btn-outline">
                     <i className="fas fa-sign-in-alt"></i> {t(`Login`)}
                   </Link>
-                  <Link to="/register" className="header-btn header-btn-primary">
+                  <Link
+                    to="/register"
+                    className="header-btn header-btn-primary"
+                  >
                     <i className="fas fa-user-plus"></i> {t(`Register`)}
                   </Link>
                 </>
@@ -323,30 +331,56 @@ function Header() {
         </div>
       </header>
 
-      <div className={`header-mobile-menu-overlay ${menuOpen ? 'header-active' : ''}`}>
+      <div
+        className={`header-mobile-menu-overlay ${
+          menuOpen ? "header-active" : ""
+        }`}
+      >
         <div className="header-mobile-menu-content">
           <nav className="header-mobile-nav-links">
-            <Link to='/' className="header-active" onClick={toggleMenu}>{t(`Home`)}</Link>
-            <Link to='/properties' onClick={toggleMenu}>{t(`Houses`)}</Link>
-            <Link to='/cars' onClick={toggleMenu}>{t(`Cars`)}</Link>
-            <Link to='/agents' onClick={toggleMenu}>{t(`Agents`)}</Link>
-            <Link to='/about' onClick={toggleMenu}>{t(`About`)}</Link>
-            <Link to='/contact' onClick={toggleMenu}>{t(`Contact`)}</Link>
+            <Link to="/" className="header-active" onClick={toggleMenu}>
+              {t(`Home`)}
+            </Link>
+            <Link to="/properties" onClick={toggleMenu}>
+              {t(`Houses`)}
+            </Link>
+            <Link to="/cars" onClick={toggleMenu}>
+              {t(`Cars`)}
+            </Link>
+            <Link to="/agents" onClick={toggleMenu}>
+              {t(`Agents`)}
+            </Link>
+            <Link to="/about" onClick={toggleMenu}>
+              {t(`About`)}
+            </Link>
+            <Link to="/contact" onClick={toggleMenu}>
+              {t(`Contact`)}
+            </Link>
           </nav>
 
           <div className="header-mobile-user-actions">
-            <Link to='/chatbot' className="header-btn header-btn-chatbot" onClick={toggleMenu}>
+            <Link
+              to="/chatbot"
+              className="header-btn header-btn-chatbot"
+              onClick={toggleMenu}
+            >
               <FontAwesomeIcon icon={faRobot} /> {t(`Support`)}
             </Link>
             {user ? (
               <>
                 <Link
-                  to={user.role === 'admin' ? '/admindashboard' : '/userprofilepage'}
+                  to={
+                    user.role === "admin"
+                      ? "/admindashboard"
+                      : "/userprofilepage"
+                  }
                   className="header-btn header-btn-outline"
                   onClick={toggleMenu}
                 >
                   <div className="header-profile-info">
-                    <span className="header-mobile-username">{user.username}</span>
+                    <span className="header-mobile-username">
+                      {user.username}
+                    </span>
                     <div className="header-profile-image">
                       {profileImage ? (
                         <img src={profileImage} alt="Profile" />
@@ -358,24 +392,39 @@ function Header() {
                     </div>
                   </div>
                 </Link>
-                <button className="header-btn header-btn-outline" onClick={handleMobileLogout}>
+                <button
+                  className="header-btn header-btn-outline"
+                  onClick={handleMobileLogout}
+                >
                   {t(`Logout`)}
                 </button>
               </>
             ) : (
               <>
-              <Link >
-        <select
-          id="language"
-          value={selectedLang}
-          onChange={(e) => changeLanguage(e.target.value)}
-        >
-          <option value="en">{t(`English`)}</option>
-          <option value="am">{t(`Amharic`)}</option>
-        </select>
-      </Link>
-                <Link to='/login' className="header-btn header-btn-outline" onClick={toggleMenu}>{t(`Login`)}</Link>
-                <Link to="/register" className="header-btn header-btn-primary" onClick={toggleMenu}>{t(`Register`)}</Link>
+                <Link>
+                  <select
+                    id="language"
+                    value={selectedLang}
+                    onChange={(e) => changeLanguage(e.target.value)}
+                  >
+                    <option value="en">{t(`English`)}</option>
+                    <option value="am">{t(`Amharic`)}</option>
+                  </select>
+                </Link>
+                <Link
+                  to="/login"
+                  className="header-btn header-btn-outline"
+                  onClick={toggleMenu}
+                >
+                  {t(`Login`)}
+                </Link>
+                <Link
+                  to="/register"
+                  className="header-btn header-btn-primary"
+                  onClick={toggleMenu}
+                >
+                  {t(`Register`)}
+                </Link>
               </>
             )}
           </div>

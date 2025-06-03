@@ -454,19 +454,19 @@ const ChatbotPage = () => {
                   className="listof-quick-reply-btn"
                   onClick={() => handleQuickReply('Hello')}
                 >
-                  Say Hello
+                  {t(`Say Hello`)}
                 </button>
                 <button 
                   className="listof-quick-reply-btn"
                   onClick={() => handleQuickReply('Help')}
                 >
-                  Get Help
+                  {t(`Get Help`)}
                 </button>
                 <button 
                   className="listof-quick-reply-btn"
                   onClick={() => handleQuickReply('What can you do?')}
                 >
-                  Features
+                  {t(`Features`)}
                 </button>
               </div>
             )}

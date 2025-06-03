@@ -237,8 +237,8 @@
                         /* Base Styles */
                         .listof-chatbot-container {
                             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-                            max-width: 800px;
-                            margin: 0 auto;
+                            max-width: 800px;                          
+                            margin: 0 auto;  margin-top: 10px;
                             height: 80vh;
                             display: flex;
                             flex-direction: column;
@@ -246,6 +246,7 @@
                             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
                             overflow: hidden;
                             background-color: #f8f9fa;
+                            /* padding: 10px; */
                         }
             
                         /* Header */

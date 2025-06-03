@@ -6,7 +6,7 @@ import FeaturedCars from './FeaturedCars'
 import Testimonials from './Testimonials'
 import FeaturedHouses from './FeaturedHouses'
 import Works from './Works'
-// import Footer from './Footer'
+import Footer from './Footer'
 function HomePage() {
   return (
     <div>
@@ -16,7 +16,7 @@ function HomePage() {
       <FeaturedCars/>
       <Testimonials/>
       <Works/>
-      {/* <Footer/> */}
+      <Footer/>
     </div>
   )
 }
